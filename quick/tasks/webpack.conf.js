@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const ExtractTextPlugins = require('extract-text-webpack-plugin')
-const extractSass = new ExtractTextPlugin({
+const extractSass = new ExtractTextPlugins({
 	filename:'[name].wass'
 })
 
@@ -27,11 +27,11 @@ module.exports = {
 			loader:'babel-loader',
 			exclude:/node_modules/,
 			options:{
-				presets:{
+				presets:[
 					['env',{
 						modules:false
 					}]
-				}
+				]
 			}
 		},
 		{
@@ -67,7 +67,7 @@ module.exports = {
 			test:/\.mina/,
 			loader:'wechat-mina-loader',
 			options:{
-				path:r('../')
+				path:r('../'),
 				dist:'./mina'
 			}
 		}
@@ -79,7 +79,7 @@ module.exports = {
 	{
 		from:{
 			glob:'pages/**/*.json',
-		}
+		},
 		to:''
 	},
 	{
@@ -87,7 +87,7 @@ module.exports = {
 		to:'static'
 	}
 	]),
-	new webpack.optimize.ModuleConcatnationPlugin(),
+	new webpack.optimize.ModuleConcatenationPlugin(),
 	new webpack.optimize.UglifyJsPlugin({
 		souceMap:false
 	}),

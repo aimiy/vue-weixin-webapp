@@ -1,0 +1,1 @@
+<view class="container log-list"></view><text class="log-item">{{index + 1}}. {{log}}</text>

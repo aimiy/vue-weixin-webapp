@@ -3,7 +3,8 @@ const { resolve } = require('path')
 const r = url => resolve(__dirname,url)
 
 module.exports = {
-  "pages":[
+  "json":{
+    "pages":[
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -12,10 +13,11 @@ module.exports = {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  }
   },
   "style":{
-  	url:r('./style/base.sass'),
-  	lang:'sass'
+    url:r('./style/base.sass'),
+    lang:'sass'
   },
   "app":r('./app.js')
 }

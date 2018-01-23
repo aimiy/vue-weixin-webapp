@@ -1,5 +1,5 @@
 // vender.js
-import regeneratorRuntime from 'regeneratorRuntime'
+import regeneratorRuntime from 'regenerator-runtime'
 
 global.regeneratorRuntime = regeneratorRuntime
 
@@ -11,7 +11,7 @@ import R from 'ramda'
 global.R = R
 
 
-const asyncWrap = fn => (option = {}) => new Promise((resolve) {
+const asyncWrap = fn => (option = {}) => new Promise((resolve) => {
 	let conf = {
 		success: res => {
 			console.log(res)

@@ -27,11 +27,11 @@ mkdir(assetsPath)
 
 var renderConf = webpackConf
 //核心内容
-renderConf.entry = () => _.reduce(config.json.pages, (en,i) => {
+var entry = () => _.reduce(config.json.pages, (en,i) => {
 	en[i] = resolve(process.cwd(),'./',`${i}.mina`)
 
-	return entry
-})
+	return en
+},{})
 
 renderConf.entry = entry()
 renderConf.entry.app = config.app
@@ -49,12 +49,12 @@ fs.writeFileSync(r('./mina/app.json'),JSON.stringify(config.json),'utf8')
 compiler.watch({
 	aggregateTimeout:300,
 	poll:true
-},(err,stats){
+},(err,status) => {
 	process.stdout.write(status.toString({
 		colors:true,
 		modules:false,
 		children:true,
 		chunks:true,
-		chunkModules
+		chunkModules:true
 	}) + '\n\n')
 })
